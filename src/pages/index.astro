@@ -1,0 +1,69 @@
+---
+import { ViewTransitions } from "astro:transitions";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <h1>Astro</h1>
+    <div
+      id="my-gallery"
+      class="grid grid-cols-1 py-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
+      <a
+        class="contents"
+        data-pswp-width="1000"
+        data-pswp-height="1000"
+        href="https://ik.imagekit.io/vjeqenuhn/launchfast-website/showcase.png"
+      >
+        <img
+          width="1000"
+          height="1000"
+          loading="lazy"
+          decoding="async"
+          class="absolute h-[250px] w-[300px] object-cover shadow"
+          src="https://ik.imagekit.io/vjeqenuhn/launchfast-website/showcase.png"
+        />
+      </a>
+      <a
+        class="contents"
+        data-pswp-height="900"
+        data-pswp-width="1600"
+        href="https://ik.imagekit.io/vjeqenuhn/launchfast-website/injecting-env-cloudflare-pages"
+      >
+        <img
+          width="1600"
+          height="900"
+          loading="lazy"
+          decoding="async"
+          class="absolute h-[250px] w-[300px] object-cover shadow"
+          src="https://ik.imagekit.io/vjeqenuhn/launchfast-website/injecting-env-cloudflare-pages"
+        />
+      </a>
+    </div>
+    <script>
+      import "photoswipe/style.css";
+      import pswpModule from "photoswipe";
+      import PhotoSwipeLightbox from "photoswipe/lightbox";
+      window.lightbox = new PhotoSwipeLightbox({
+        pswpModule,
+        children: "a",
+        gallery: "#my-gallery",
+      });
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          if (lightbox) lightbox.init();
+        },
+        { once: false }
+      );
+    </script>
+  </body>
+</html>
